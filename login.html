@@ -60,28 +60,43 @@
                 <div class="card p-4">
                     <div class="card-body">
                         <h2 class="card-title">Login</h2>
-                        <form id="loginForm" action="login.php" method="post">
+                        <form id="loginForm">
                             <div class="mb-3 text-start">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" name="username" required>
+                                <input type="text" class="form-control" id="username" required>
                             </div>
                             <div class="mb-3 text-start">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password" required>
+                                <input type="password" class="form-control" id="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Login</button>
                         </form>
+                        <p id="errorMsg" class="text-danger mt-3" style="display:none;">Invalid username or password.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="mt-5">
+    <footer class="text-center mt-5">
         <p>&copy; 2025 UiTM. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            // Correct login credentials
+            if (username === "erdena" && password === "erdena00") {
+                window.location.href = "profiles.html"; // Redirect after login
+            } else {
+                document.getElementById("errorMsg").style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
